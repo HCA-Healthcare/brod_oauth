@@ -53,7 +53,6 @@ required parameter, and not all setups require extensions to be provided. Such i
 ##### Erlang
 
 ```erlang
--
 -module(example).
 
 -export([start_client/0, fetch_token/1]).
