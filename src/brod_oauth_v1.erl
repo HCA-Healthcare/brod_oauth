@@ -28,10 +28,6 @@
     end
 ).
 
-%%%-------------------------------------------------------------------
-%% @doc
-%% Returns 'ok' if authentication successfully completed. See spec in behavior
-%% @end
 -spec auth(brod_oauth:state()) -> {ok, map()} | {error, Reason :: term()}.
 auth(State) ->
     case auth_begin(State) of
