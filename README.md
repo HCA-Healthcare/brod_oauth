@@ -9,7 +9,7 @@
 
 ## Setup
 
-Add `brod_oauth` to your deps in rebar3.config or mix.exs :
+Add `brod_oauth` to your deps in rebar.config or mix.exs :
 
 ### rebar.config
 
@@ -18,6 +18,7 @@ Add `brod_oauth` to your deps in rebar3.config or mix.exs :
 ```
 
 ### mix.exs
+
 ```elixir
 {:brod_gssapi, "~> 0.1"}
 ```
