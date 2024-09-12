@@ -145,7 +145,7 @@ defmodule Example do
   end
 ```
 
-See the [examples](https://github.com/HCAIntegrationServices/brod_oauth/tree/main/examples) for more detail.
+See the [examples](https://github.com/HCA-Healthcare/brod_oauth/tree/main/examples) for more detail.
 
 # Further reading
 
