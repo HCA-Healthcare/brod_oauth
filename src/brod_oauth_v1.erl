@@ -1,5 +1,6 @@
-%% @private
 -module(brod_oauth_v1).
+
+-moduledoc false.
 
 -export([auth/1]).
 
