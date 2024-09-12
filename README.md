@@ -26,10 +26,10 @@ Add `brod_oauth` to your deps in rebar3.config or mix.exs :
 
 ### Configuration and usage
 
-The only required configuation for `brod` is a sasl callback tuple with specific configuration
+The only required configuration for `brod` is a sasl callback tuple with specific configuration
 for `brod_oauth` enclosed in a map. See [brod authentication
-support](https://github.com/kafka4beam/brod?tab=readme-ov-file#authentication-support) 
-for more general information on authentication support in brod. 
+support](https://github.com/kafka4beam/brod?tab=readme-ov-file#authentication-support)
+for more general information on authentication support in brod.
 
 
 #### brod_oauth configuration map 
@@ -38,9 +38,9 @@ for more general information on authentication support in brod.
 
 - `token_callback` : An arity 1 callback function. Said function is given a map containing
 connection properties and expected to return a map containing the key
-`token`, pointing to a valid JWT retrived from an oauth provider.
+`token`, pointing to a valid JWT retrieved from an oauth provider.
 The current properties passed to the callback are as follows :
-     - `client_id` : The client id of of the brod client instance.
+     - `client_id` : The client id of the brod client instance.
      - `host` : Hostname for the current connection requiring auth.
      - `timeout` : The timeout value associated with connection (i.e., `connect_timeout`).
 
