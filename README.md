@@ -14,7 +14,7 @@ Add `brod_oauth` to your deps in rebar.config or mix.exs :
 ### rebar.config
 
 ```erlang
-{deps, [brod_oauth]}.
+{deps, [{brod_oauth, "0.1.0"}]}.
 ```
 
 ### mix.exs
@@ -33,7 +33,7 @@ support](https://github.com/kafka4beam/brod?tab=readme-ov-file#authentication-su
 for more general information on authentication support in brod.
 
 
-#### brod_oauth configuration map 
+#### brod_oauth configuration map
 
 **Required keys** :
 
