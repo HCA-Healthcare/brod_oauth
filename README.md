@@ -11,10 +11,13 @@
 
 Add `brod_oauth` to your deps in rebar3.config or mix.exs :
 
+### rebar.config
+
 ```erlang
 {deps, [brod_oauth]}.
 ```
 
+### mix.exs
 ```elixir
  {:brod_gssapi, "~> 0.1"}
 ```
