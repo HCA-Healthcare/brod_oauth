@@ -5,7 +5,7 @@
 [![Docs](https://img.shields.io/badge/hex-docs-green.svg?style=flat)](https://hexdocs.pm/brod_oauth)
 [![Erlang Versions](https://img.shields.io/badge/Supported%20Erlang%2FOTP-25.0%20to%2027.0-blue)](http://www.erlang.org)
 
-`brod_oauth` is a plugin for [brod](https://github.com/kafka4beam/brod) which adds oauth bearer support.
+`brod_oauth` is a plugin for [brod](https://github.com/kafka4beam/brod) which adds SASL/OAUTHBEARER auth support.
 
 ## Setup
 
@@ -19,22 +19,27 @@ Add `brod_oauth` to your deps in rebar3.config or mix.exs :
 
 ### mix.exs
 ```elixir
- {:brod_gssapi, "~> 0.1"}
+{:brod_gssapi, "~> 0.1"}
 ```
 
-**NOTE** : `brod_oauth` requires `kakfa_protocol` >= `4.1.8`.
+**NOTE** : `brod_oauth` requires `kafka_protocol` >= `4.1.8`.
 
 ### Configuration and usage
 
 The only required configuation for `brod` is a sasl callback tuple with specific configuration
-for `brod_oauth` enclosed in a map.
+for `brod_oauth` enclosed in a map. See [brod authentication
+support](https://github.com/kafka4beam/brod?tab=readme-ov-file#authentication-support) 
+for more general information on authentication support in brod. 
 
-Required keys :
+
+#### brod_oauth configuration map 
+
+**Required keys** :
 
 - `token_callback` : An arity 1 callback function. Said function is given a map containing
 connection properties and expected to return a map containing the key
 `token`, pointing to a valid JWT retrived from an oauth provider.
-The current properties passed to to the callback are as follows :
+The current properties passed to the callback are as follows :
      - `client_id` : The client id of of the brod client instance.
      - `host` : Hostname for the current connection requiring auth.
      - `timeout` : The timeout value associated with connection (i.e., `connect_timeout`).
@@ -150,5 +155,5 @@ See the [examples](https://github.com/HCA-Healthcare/brod_oauth/tree/main/exampl
 # Further reading
 
 - [Kafka KIP-255](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=75968876)
-- [Kafka KIP-768](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=186877575) 
+- [Kafka KIP-768](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=186877575)
 - [RFC-5801](https://www.rfc-editor.org/rfc/rfc5801.html)
