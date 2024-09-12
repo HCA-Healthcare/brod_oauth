@@ -1,0 +1,33 @@
+---
+name: test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  test:
+    name: Erlang/OTP ${{matrix.otp}} / rebar3 ${{matrix.rebar3}} / Elixir ${{matrix.elixir}}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        otp: ['25', '26']
+        rebar3: ['3.23.0']
+        elixir: ['1.15', '1.16']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{matrix.otp}}
+          rebar3-version: ${{matrix.rebar3}}
+          elixir-version: ${{matrix.elixir}}
+      - name: Common Tests
+        run: rebar3 test
+      - name: Install docker compose
+        run: |
+          curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          chmod +x /usr/local/bin/docker-compose
+      - name: Integration tests
+        run: cd examples && ./run.sh

@@ -1,0 +1,6 @@
+%{
+  "brod": {:hex, :brod, "4.1.0", "88141fdab3db47e0bea4325760ff886f3db0339052899c2b1a86ede353c7cd19", [:rebar3], [{:kafka_protocol, "4.1.5", [hex: :kafka_protocol, repo: "hexpm", optional: false]}], "hexpm", "389f459b1d59662c1acdd9c39d54ddbd45645b4ac619f3bc6f467fcfbf7fb413"},
+  "crc32cer": {:hex, :crc32cer, "0.1.8", "c6c2275c5fb60a95f4935d414f30b50ee9cfed494081c9b36ebb02edfc2f48db", [:rebar3], [], "hexpm", "251499085482920deb6c9b7aadabf9fb4c432f96add97ab42aee4501e5b6f591"},
+  "jason": {:hex, :jason, "1.4.4", "b9226785a9aa77b6857ca22832cffa5d5011a667207eb2a0ad56adb5db443b8a", [:mix], [{:decimal, "~> 1.0 or ~> 2.0", [hex: :decimal, repo: "hexpm", optional: true]}], "hexpm", "c5eb0cab91f094599f94d55bc63409236a8ec69a21a67814529e8d5f6cc90b3b"},
+  "kafka_protocol": {:hex, :kafka_protocol, "4.1.8", "b09c55ada62c6251d85b9223c7bd30e3264dfe393302618abe417256c0145167", [:rebar3], [{:crc32cer, "0.1.8", [hex: :crc32cer, repo: "hexpm", optional: false]}], "hexpm", "cadfd5ae8995f1ac7823e0b565491975ef205d94dbf759f0e54a3ffe90044180"},
+}
