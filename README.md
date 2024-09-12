@@ -96,7 +96,7 @@ start_client() ->
   ok = brod:start_client(BootstrapEndpoints, my_client, BrodConfig).
 ```
 
-###### Elixir
+##### Elixir
 
 ```elixir
 
