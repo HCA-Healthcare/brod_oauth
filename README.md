@@ -20,7 +20,7 @@ Add `brod_oauth` to your deps in rebar.config or mix.exs :
 ### mix.exs
 
 ```elixir
-{:brod_gssapi, "~> 0.1"}
+{:brod_oauth, "~> 0.1.0"}
 ```
 
 **NOTE** : `brod_oauth` requires `kafka_protocol` >= `4.1.8`.
