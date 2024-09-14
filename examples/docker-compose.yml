@@ -22,7 +22,7 @@ services:
       - ./docker/keycloak:/opt/keycloak/data/import
 
   kafka-oauth-test:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:7.7.1
     hostname: broker
     container_name: kafka-oauth-test
     depends_on:
