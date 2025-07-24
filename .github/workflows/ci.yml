@@ -13,9 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        otp: ['25', '26']
-        rebar3: ['3.23.0']
-        elixir: ['1.15', '1.16']
+        otp: ['27', '28']
+        rebar3: ['3.25.0']
+        elixir: ['1.17', '1.19']
+    env: 
+      KC_KAFKA_BROKER_SECRET: ${{ secrets.KC_KAFKA_BROKER_SECRET }}
     steps:
       - uses: actions/checkout@v2
       - uses: erlef/setup-beam@v1

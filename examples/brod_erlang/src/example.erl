@@ -11,7 +11,7 @@ get_config() ->
         oauth => #{
             url => "http://localhost:8080/realms/waterpark-keycloak/protocol/openid-connect/token",
             grant_type => "client_credentials",
-            client_secret => "P8mMXAp0XX3APmV19VCfNbhzAWdpKRzx",
+            client_secret => os:getenv("KC_CLIENT_BROKER_SECRET"),
             client_id => "kafka-broker"
         }
     }.

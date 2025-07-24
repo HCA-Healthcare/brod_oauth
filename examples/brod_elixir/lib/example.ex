@@ -13,7 +13,7 @@ defmodule Example do
       oauth: %{
         url: "http://localhost:8080/realms/waterpark-keycloak/protocol/openid-connect/token",
         grant_type: "client_credentials",
-        client_secret: "P8mMXAp0XX3APmV19VCfNbhzAWdpKRzx",
+        client_secret: System.get_env("KC_KAFKA_BROKER_SECRET"),
         client_id: "kafka-broker"
       }
     }

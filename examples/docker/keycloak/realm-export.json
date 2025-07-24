@@ -684,7 +684,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "P8mMXAp0XX3APmV19VCfNbhzAWdpKRzx",
+      "secret": "${KC_KAFKA_BROKER_SECRET}",
       "redirectUris": [
         "/*"
       ],
