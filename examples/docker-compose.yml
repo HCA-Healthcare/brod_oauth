@@ -10,6 +10,7 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KEYCLOAK_LOGLEVEL: DEBUG
+      KC_KAFKA_BROKER_SECRET: ${KC_KAFKA_BROKER_SECRET}
 
     command:
       - start-dev
@@ -34,21 +35,21 @@ services:
     environment:
       CLUSTER_ID: 1
       KAFKA_BROKER_ID: 1
-      KAFKA_TOPIC_AUTO_CREATE: 'true'
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,OIDC:SASL_PLAINTEXT'
-      KAFKA_ADVERTISED_LISTENERS: 'PLAINTEXT://broker:29094,OIDC://localhost:9094'
+      KAFKA_TOPIC_AUTO_CREATE: "true"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,OIDC:SASL_PLAINTEXT"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://broker:29094,OIDC://localhost:9094"
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: localhost
-      KAFKA_PROCESS_ROLES: 'broker,controller'
+      KAFKA_PROCESS_ROLES: "broker,controller"
       KAFKA_NODE_ID: 1
-      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@broker:29093'
-      KAFKA_LISTENERS: 'PLAINTEXT://broker:29094,CONTROLLER://broker:29093,OIDC://0.0.0.0:9094'
-      KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
-      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@broker:29093"
+      KAFKA_LISTENERS: "PLAINTEXT://broker:29094,CONTROLLER://broker:29093,OIDC://0.0.0.0:9094"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
       KAFKA_SASL_ENABLED_MECHANISMS: OAUTHBEARER
       KAFKA_CONNECTIONS_MAX_REAUTH_MS: 2000
       KAFKA_SASL_OAUTHBEARER_JWKS_ENDPOINT_URL: http://keycloak-oauth-test:8080/realms/waterpark-keycloak/protocol/openid-connect/certs
@@ -58,14 +59,14 @@ services:
       KAFKA_SASL_OAUTHBEARER_EXPECTED_ISSUER: "http://localhost:8080/realms/waterpark-keycloak"
       KAFKA_SASL_OAUTHBEARER_SCOPE_CLAIM_NAME: "email profile"
       KAFKA_SASL_OAUTHBEARER_SUB_CLAIM_NAME:
-      KAFKA_LOG_DIRS: '/tmp/kraft-combined-logs'
+      KAFKA_LOG_DIRS: "/tmp/kraft-combined-logs"
       KAFKA_LISTENER_NAME_OIDC_OAUTHBEARER_SASL_SERVER_CALLBACK_HANDLER_CLASS: org.apache.kafka.common.security.oauthbearer.secured.OAuthBearerValidatorCallbackHandler
     restart: unless-stopped
     networks:
       kafka-oauth-cluster:
 
     volumes:
-          - ./docker/kafka:/tmp/kafka
+      - ./docker/kafka:/tmp/kafka
 networks:
   kafka-oauth-cluster:
     name: kafka-oauth-cluster
