@@ -55,7 +55,7 @@ auth_begin(#{debug := Debug} = State) ->
 
 -spec auth_continue(State :: brod_oauth:state()) ->
     ok | {error, term()}.
-auth_continue(#{token_callback := TokenCB, debug := Debug} = State) ->
+auth_continue(#{token_callback := TokenCB, debug := Debug, callback_data := ClientCallbackData} = State) ->
     ?DBG(Debug, "Preparing to fire get_auth_data callback..."),
 
     #{
@@ -65,7 +65,7 @@ auth_continue(#{token_callback := TokenCB, debug := Debug} = State) ->
         debug := Debug
     } = State,
 
-    CallbackData = #{host => Host, client_id => ClientId, timeout => Timeout},
+    CallbackData = maps:merge(ClientCallbackData, #{host => Host, client_id => ClientId, timeout => Timeout}),
 
     ?DBG(Debug, "callback data to be passed", CallbackData),
 

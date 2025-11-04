@@ -15,6 +15,7 @@
     timeout := pos_integer(),
     handshake_vsn := non_neg_integer() | legacy,
     token_callback := fun(),
+    callback_data => map(),
     extensions => map(),
     authz_id => binary()
 }.
@@ -71,6 +72,7 @@ new(Host, Sock, HandshakeVsn, Mod, ClientId, Timeout, #{token_callback := OAuthC
         timeout => Timeout,
         handshake_vsn => HandshakeVsn,
         token_callback => OAuthCB,
+        callback_data => maps:get(callback_data, Cfg, #{}),
         authz_id => maps:get(authz_id, Cfg, <<"">>),
         extensions => maps:get(extensions, Cfg, #{})
     }.
