@@ -152,6 +152,7 @@ defmodule Example do
 ```
 
 See the [examples](https://github.com/HCA-Healthcare/brod_oauth/tree/main/examples) for more detail.
+Make sure to set `KC_KAFKA_BROKER_SECRET` env variable before running examples test. Its value can be any text
 
 # Further reading
 
