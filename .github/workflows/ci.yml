@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        otp: ['27', '28']
-        rebar3: ['3.25.0']
-        elixir: ['1.17', '1.19']
-    env: 
+        otp: ["28"]
+        rebar3: ["3.25.0"]
+        elixir: ["1.19"]
+    env:
       KC_KAFKA_BROKER_SECRET: ${{ secrets.KC_KAFKA_BROKER_SECRET }}
     steps:
       - uses: actions/checkout@v2
