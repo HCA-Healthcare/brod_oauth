@@ -87,7 +87,7 @@ simple(_Config) ->
             gen_tcp,
             <<"client_id">>,
             42,
-            #{token_callback => fun (_) -> {ok, #{token => ?TOKEN}} end}
+            #{token_callback => fun (#{env := test}) -> {ok, #{token => ?TOKEN}} end, callback_data => #{env => test}}
         )
     ).
 

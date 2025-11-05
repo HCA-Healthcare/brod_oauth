@@ -8,7 +8,9 @@ defmodule Example do
       partition: 0,
       brod_config: [
         connect_timeout: 60_000,
-        sasl: {:callback, :brod_oauth, %{token_callback: &Example.oauth_params/1}}
+        sasl:
+          {:callback, :brod_oauth,
+           %{token_callback: &Example.oauth_params/1, callback_data: %{env: :test}}}
       ],
       oauth: %{
         url: "http://localhost:8080/realms/waterpark-keycloak/protocol/openid-connect/token",
@@ -19,7 +21,8 @@ defmodule Example do
     }
   end
 
-  def oauth_params(_) do
+  def oauth_params(callback_data) do
+    :test = callback_data.env
     client_config = get_config()
     oauth_config = client_config.oauth
     extensions = Map.get(client_config, :extensions, %{})
@@ -128,7 +131,7 @@ defmodule Example do
     end
   end
 
-   def test(test_type) do
+  def test(test_type) do
     System.put_env("NIF_BIN_DIR", "_build/dev/lib/crc32cer/priv")
     Logger.configure(level: :info)
     info_log("Starting test for #{Atom.to_string(test_type)}")
