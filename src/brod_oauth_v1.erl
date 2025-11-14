@@ -89,8 +89,14 @@ do_get_token_props(State, Callback, CallbackData, Debug) ->
         {ok, Props} when is_map(Props) ->
             ?DBG(Debug, "Successfully fired auth data callback"),
             validate_auth_props(State, Props, Debug);
-        _Other ->
-            {error, <<"Expected a map from brod_oauth token callback, got : ">>}
+        {ok, Other} ->
+            Msg = iolist_to_binary(io_lib:format(
+                <<"Expected a map from brod_oauth token callback, got : ~0p">>,
+                [Other]
+            )),
+            {error, Msg};
+        Other ->
+            {error, Other}
     catch
         error:Err ->
             {error, Err};
